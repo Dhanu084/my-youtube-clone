@@ -1,12 +1,10 @@
 import React from "react";
-import ButtonContainer from "./ButtonContainer";
-import VideoContainer from "./VideoContainer";
+import { Outlet } from "react-router-dom";
 
 const Body = () => {
   return (
-    <div className='flex flex-col w-full'>
-      <ButtonContainer />
-      <VideoContainer />
+    <div className='h-screen w-screen'>
+      <Outlet />
     </div>
   );
 };

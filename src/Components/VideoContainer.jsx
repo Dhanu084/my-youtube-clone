@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import VideoCard from "./VideoCard";
+import ButtonContainer from "./ButtonContainer";
+import { Link } from "react-router-dom";
 
 const VideoContainer = () => {
   const [videos, setVideos] = useState([]);
@@ -14,11 +16,17 @@ const VideoContainer = () => {
     setVideos(items);
   };
   return (
-    <div className='flex flex-wrap my-2'>
-      {videos.map((video) => (
-        <VideoCard video={video} />
-      ))}
-    </div>
+    <>
+      <ButtonContainer />
+      <div className='flex flex-wrap my-2'>
+        {videos.map((video) => (
+          <Link to={`/watch/?v=${video.id}`} key={video.id}>
+            {" "}
+            <VideoCard video={video} />
+          </Link>
+        ))}
+      </div>
+    </>
   );
 };
 
