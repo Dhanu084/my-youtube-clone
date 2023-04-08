@@ -21,7 +21,7 @@ const Header = () => {
         />
       </div>
 
-      <div className='hidden sm:visible col-span-0 sm:col-span-10'>
+      <div className='hidden sm:block col-span-0  sm:col-span-10'>
         <input
           className='w-96 p-2 my-2 h-10 border-2 rounded-l-3xl'
           type='text'
