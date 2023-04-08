@@ -1,8 +1,11 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 const Sidebar = () => {
+  const app = useSelector((state) => state.app);
+  if (!app.isMenuOpen) return <></>;
   return (
-    <div className='w-60 h-screen shadow-md'>
+    <div className='w-56 h-screen shadow-md'>
       <ul className='px-3 flex flex-col'>
         <li className='my-2'>Home</li>
         <li className='my-2'>Shorts</li>

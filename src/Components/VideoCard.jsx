@@ -5,12 +5,12 @@ const VideoCard = (props) => {
   const { thumbnails, title, channelTitle } = snippet;
   const { viewCount } = statistics;
   return (
-    <div className='h-82 w-56 shadow-md m-4 relative'>
+    <div className='h-fit w-52  shadow-md m-4'>
       <img className='h-70 w-full ' src={thumbnails.high.url} />
       <div className='my-2 p-2'>
-        <p className='font-bold'>{title}</p>
-        <p className='my-4'>{channelTitle}</p>
-        <small className='absolute bottom-1 my-2'>{viewCount} views</small>
+        <p className='font-bold mb-4'>{title}</p>
+        <p className='mb-2'>{channelTitle}</p>
+        <small className=' bottom-1 my-4'>{viewCount} views</small>
       </div>
     </div>
   );

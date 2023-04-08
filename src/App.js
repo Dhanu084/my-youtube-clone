@@ -29,9 +29,9 @@ const appRouter = createBrowserRouter([
 ]);
 function App() {
   return (
-    <div className='App'>
+    <div className='overflow-x-hidden'>
       <Header />
-      <div className='flex'>
+      <div className='flex w-screen'>
         <Sidebar />
         <RouterProvider router={appRouter} />
       </div>
