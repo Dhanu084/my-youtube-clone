@@ -14,7 +14,6 @@ const SingleVideo = () => {
     const url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${id}&key=${process.env.REACT_APP_API_KEY}`;
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data.items);
     setVideoDetails(data.items[0]);
   };
 
@@ -24,7 +23,7 @@ const SingleVideo = () => {
   }, []);
 
   return (
-    <div className='h-1000 mx-5 w-3/4'>
+    <div className='h-2/4 my-5 sm:p-2 sm:h-1000 sm:mx-5 sm:my-0 sm:w-3/4'>
       <iframe
         className='w-full'
         height='400'
@@ -35,9 +34,11 @@ const SingleVideo = () => {
         allowFullScreen
       ></iframe>
       {videoDetails && (
-        <div className='h-24 shadow-lg w-full p-2'>
+        <div className='h-2/5 sm:h-24 shadow-lg w-full p-2'>
           <div>
-            <h1 className='font-bold text-2xl'>{videoDetails.snippet.title}</h1>
+            <h1 className=' mb-8 font-bold text-2xl'>
+              {videoDetails.snippet.title}
+            </h1>
           </div>
           <div className='flex justify-around w-full'>
             <div className='w-2/3'>{videoDetails.snippet.channelTitle}</div>

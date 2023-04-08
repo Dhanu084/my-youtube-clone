@@ -11,7 +11,7 @@ const buttons = [
 ];
 const ButtonContainer = () => {
   return (
-    <div className='grid grid-flow-col my-4 mx-2'>
+    <div className='invisible sm:visible grid grid-flow-col sm:my-4 max:auto sm:mx-2'>
       {buttons.map((button, i) => (
         <div
           className={`h-7  col-span-4 px-4 rounded-lg mx-2 text-center  bg-gray-100 ${
