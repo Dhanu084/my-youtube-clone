@@ -9,7 +9,7 @@ const VideoContainer = () => {
     fetchVideos();
   }, []);
   const fetchVideos = async () => {
-    const url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=US&key=${process.env.REACT_APP_API_KEY}&maxResults=50`;
+    const url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=IN&key=${process.env.REACT_APP_API_KEY}&maxResults=50`;
     const response = await fetch(url);
     const data = await response.json();
     const { items } = data;
