@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { toggleMenu } from "../Slices/appSlice";
-import { Link } from "react-router-dom";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -15,8 +14,7 @@ const Header = () => {
       try {
         const response = await fetch(url);
         const data = await response.json();
-        console.log(data);
-        setSearchResults(data.items.slice(0, 10));
+        setSearchResults(data.items.splice(0, 10));
       } catch (err) {
         // console.log(err);
       }
@@ -47,7 +45,7 @@ const Header = () => {
         />
       </div>
 
-      <div className='w-8 sm: w-full block col-span-0  sm:col-span-10 sm:relative'>
+      <div className='w-8 sm: w-full block col-span-0  sm:col-span-10 relative'>
         <input
           className='w-3/4 p-2 my-2 h-10 border-2 rounded-l-3xl'
           type='text'
@@ -57,19 +55,22 @@ const Header = () => {
           onFocus={() => setShowResults(true)}
           onBlur={() => setShowResults(false)}
         />
-        <button className='h-10 px-2 w-12 my-2 text-center rounded-r-3xl bg-gray-100'>
+        <button
+          className='h-10 px-2 w-12 my-2 text-center rounded-r-3xl bg-gray-100'
+          onClick={fetchSearchQuery}
+        >
           🔍
         </button>
         {searchResults[0] && showResults && (
-          <div className='sm:absolute'>
+          <div className='absolute w-3/4'>
             <ul className='bg-white w-full'>
-              {searchResults.map((sr) => {
+              {searchResults.map((sr, index) => {
                 return (
-                  <Link key={sr.id} to={`/watch?v=${sr.id}`}>
-                    <li className='bg-white w-96 m-1 p-2 rounded-sm shadow-lg hover:bg-gray-100'>
-                      🔍 {sr.snippet.title}
-                    </li>
-                  </Link>
+                  // <Link key={index} to={`/watch?v=${sr.id.videoId}`}>
+                  <li className='bg-white w-full m-1 p-2 rounded-sm shadow-lg hover:bg-gray-100'>
+                    🔍 {sr.snippet.title}
+                  </li>
+                  // </Link>
                 );
               })}
             </ul>
