@@ -12,17 +12,11 @@ const appRouter = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Body />,
-        children: [
-          {
-            path: "/",
-            element: <VideoContainer />
-          },
-          {
-            path: "watch",
-            element: <SingleVideo />
-          }
-        ]
+        element: <VideoContainer />
+      },
+      {
+        path: "/watch",
+        element: <SingleVideo />
       }
     ]
   }
@@ -30,7 +24,7 @@ const appRouter = createBrowserRouter([
 function App() {
   return (
     <div className='overflow-x-hidden'>
-      <Header />
+      {/* <Header /> */}
       <div className='flex w-screen'>
         <Sidebar />
         <RouterProvider router={appRouter} />

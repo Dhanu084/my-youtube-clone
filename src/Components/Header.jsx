@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { toggleMenu } from "../Slices/appSlice";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -29,7 +30,7 @@ const Header = () => {
   }, [searchQuery]);
 
   return (
-    <div className='grid grid-flow-col h-16 shadow-lg'>
+    <div className='grid grid-flow-col h-16 shadow-lg fixed w-screen z-10 bg-white'>
       <div className='col-span-4 sm:col-span-1 sm:mx-2 my-4 cursor-pointer'>
         <img
           onClick={() => dispatch(toggleMenu())}
@@ -53,7 +54,6 @@ const Header = () => {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           onFocus={() => setShowResults(true)}
-          onBlur={() => setShowResults(false)}
         />
         <button
           className='h-10 px-2 w-12 my-2 text-center rounded-r-3xl bg-gray-100'
@@ -66,11 +66,18 @@ const Header = () => {
             <ul className='bg-white w-full'>
               {searchResults.map((sr, index) => {
                 return (
-                  // <Link key={index} to={`/watch?v=${sr.id.videoId}`}>
-                  <li className='bg-white w-full m-1 p-2 rounded-sm shadow-lg hover:bg-gray-100'>
-                    🔍 {sr.snippet.title}
+                  <li
+                    key={sr.id.videoId``}
+                    className='bg-white w-full m-1 p-2 rounded-sm shadow-lg hover:bg-gray-100'
+                  >
+                    <Link
+                      to={`/watch/?v=${sr.id.videoId}`}
+                      onBlur={() => setShowResults(false)}
+                    >
+                      {sr.snippet.title}
+                    </Link>
+                    🔍
                   </li>
-                  // </Link>
                 );
               })}
             </ul>
