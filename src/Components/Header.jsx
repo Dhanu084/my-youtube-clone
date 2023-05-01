@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { toggleMenu } from "../Slices/appSlice";
 import { Link } from "react-router-dom";
+import { MdAccountCircle } from "react-icons/md";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -34,7 +35,7 @@ const Header = () => {
       <div className='col-span-4 sm:col-span-1 sm:mx-2 my-4 cursor-pointer'>
         <img
           onClick={() => dispatch(toggleMenu())}
-          className='w-6 sm:h-8 sm:w-10'
+          className='w-6 sm:h-8 sm:w-10 pl-2'
           src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgz8qMxRmaHif6zYN0OyOJ2zi8gBulBwLPnw&usqp=CAU'
         />
       </div>
@@ -46,7 +47,7 @@ const Header = () => {
         />
       </div>
 
-      <div className='w-8 sm: w-full block col-span-0  sm:col-span-10 relative'>
+      <div className='sm: w-full block col-span-0 sm:col-span-10 relative'>
         <input
           className='w-3/4 p-2 my-2 h-10 border-2 rounded-l-3xl'
           type='text'
@@ -61,7 +62,7 @@ const Header = () => {
         >
           🔍
         </button>
-        {searchResults[0] && showResults && (
+        {searchResults.length && showResults ? (
           <div className='absolute w-3/4'>
             <ul className='bg-white w-full'>
               {searchResults.map((sr, index) => {
@@ -82,9 +83,11 @@ const Header = () => {
               })}
             </ul>
           </div>
-        )}
+        ) : null}
       </div>
-      <div className='col-span-2 my-2 text-2xl'>🅿️</div>
+      <div className='col-span-2 '>
+        <MdAccountCircle className='my-2 text-4xl' />
+      </div>
     </div>
   );
 };

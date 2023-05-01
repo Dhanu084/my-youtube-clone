@@ -16,7 +16,7 @@ const ButtonContainer = () => {
         <div
           className={`h-7  col-span-4 px-4 rounded-lg mx-2 text-center  bg-gray-100 ${
             i === 0 ? "bg-black" : ""
-          }`}
+          } cursor-pointer hover:bg-black hover:text-white`}
           key={i}
         >
           {button}
